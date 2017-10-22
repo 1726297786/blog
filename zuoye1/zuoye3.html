@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	    <script>
+		$(function(){
+			$('#register').click(function(){
+			var zhang = $('#fname').val();
+			var mi = $('#password').val();
+			$.ajax({
+				type:"post",
+				url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+				data:{status:'register',userID:zhang,password:mi},
+				success:function(msg){
+					if(msg == 1){
+						alert('注册成功');
+					}
+					if(msg == 0){
+						alert('用户名重名');
+					}else{
+						alert('数据库报错');
+					}
+				}
+			});
+		})
+			
+			$('#login').click(function(){
+			var zhang = $('#fname').val();
+			var mi = $('#password').val();
+			$.ajax({
+				type:"post",
+				url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+				data:{status:'login',userID:zhang,password:mi},
+				success:function(data){
+					if(data ==0){
+						alert('用户名不存在');
+					}
+					if(data ==2){
+						alert('用户名密码不符');
+					}else{
+						alert('登录成功');
+						window.location.href='.html';
+					}
+				}
+			});
+		})
+		})
+		</script>
+		<style>
+		</style>
+	</head>
+	<body>
+		<div data-role="content">
+			<div style="text-align: center;padding-top: 8em;">
+				<img src="images/79a32e4d1a05db1a07a732393ee59079.png"style="width: 15em;"/>
+			</div>
+			<form method="post" action="demoform.asp">
+					<label for="fname" class="ui-hidden-accessible">姓名</label>
+	      			<input type="text" name="fname" id="fname" placeholder="姓名：">
+	      			<label for="password" class="ui-hidden-accessible">密码</label>
+	      			<input type="password" name="password" id="password" placeholder="密码："/>
+	      			<input type="submit" data-inline="false" value="注册" id="register"/>
+	      			<input type="submit" data-inline="false" value="登录" id="login">
+			</form>
+		</div>	
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,li{
+			list-style: none;
+
+		}
+		ul{
+			width: 800px;
+			margin: 0 auto;
+		}
+	</style>
+	<script src="jquery-2.2.2.js"></script>
+</head>
+<body>
+	<button id="btn">点击</button>
+	<input type="text" id="inp">
+</body>
+<script>
+	$('#btn').click(function(){
+		$.ajax({
+			type:"get",
+			url:"http://datainfo.duapp.com/shopdata"
+			data:{
+				status:"login",userID:"dengxiaotian",password:"672177"
+			},
+			datatype:'jsonp',
+			sucess:function(data){
+				console.log(data);
+			}
+		})
+	});
+	//type:请求方式（get,post）
+	//url:接口地址
+	//data:传入的参数
+	//dataType:返回的数据类型，一般的值为--json/jsonp
+	//success:成功后的回调函数
+	//
+	// $('#btn').click(function(){
+		// $.ajax({
+		// 	type:'get',
+		// 	url:'ajax/getNews.php',
+		// 	// data:{username:'liu',age:100},
+		// 	dataType:'json',
+		// 	success:function(data){
+		// 		document.body.appendChild(ul);
+		// 		for(var i=0; i<data.length; i++){
+		// 			var li = document.createElement('li');
+		// 			ul.appendChild(li);
+		// 			li.innerHTML='<a href="">'+data[i].title+'</a><span style="float:right;">'+data[i].date+'</span>';
+		// 		}
+		// 	},
+		// 	error:function(){
+		// 		alert('error');
+		// 	}
+
+		// })
+	// })
+	// 
+	function fn(data){
+		console.log(data.s[0]);
+	}
+
+
+	var inp = document.getElementById('inp');
+	inp.oninput = function(){
+		var sc = document.createElement('script');
+		sc.src = s
+
+		document.body.appendChild(sc);
+		document.body.removeChild(sc);
+	}
+
+</script>
+</html>
